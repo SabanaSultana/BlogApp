@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client' // it runs react app on browser (ReactDOM)
 import App from './App.jsx'
 import './index.css'
 
