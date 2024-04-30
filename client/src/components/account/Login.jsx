@@ -7,10 +7,13 @@ export default function Login() {
   return (
    <Box className="container">
      <img src={imageURL} alt="Login"  className='img'/>
-     <TextField id="standard-basic" label="Standard" variant="standard" />
-     <TextField id="standard-basic" label="Standard" variant="standard" />
-     <Button variant="contained">LOGIN</Button>
-     <Button variant="text">CREATE AN ACCOUNT</Button>
+     <Box className='wrapper'>
+      <TextField id="standard-basic" label="Standard" variant="standard" />
+      <TextField id="standard-basic" label="Standard" variant="standard" />
+      <Button variant="contained" className='btn'>LOGIN</Button>
+      <p>OR</p>
+      <Button variant="text" className='btn'>CREATE AN ACCOUNT</Button>
+     </Box>
    </Box>
   )
 }
