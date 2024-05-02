@@ -1,12 +1,14 @@
 import mongoose from "mongoose"
-requestAnimationFrame("dotenv").config()
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 export const dbConnect=async()=>{
     try{
         await mongoose.connect(process.env.DB_URL,(
             {
                 useNewUrlParser:true,
-                useUnifiedTopology
+                useUnifiedTopology:true,
             }
         ))
         console.log("DB connected successfully")
