@@ -1,41 +1,57 @@
+/* General container styles */
 .login-container {
-    margin: auto;
-    box-shadow: 5px 2px 5px 2px rgb(0,0,0,0.6);
-  }
-  
-.img{
-    width:100px;
-    display:flex;
-    margin:auto;
-    padding:50px 0 0 ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-top: 50px;
 }
-.wrapper{
-    display:flex;
-    flex-direction: column;
-    flex: 1;
-    padding:25px 35px;
-}
-.wrapper .login-btn{
-    margin-top:22px;
-    text-transform: none;
-    background-color: #fb641b;
-    height:40px;
-    border-radius: 2px;
 
+/* Form wrapper styles */
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.wrapper .login-btn:hover {
-    background-color: #fc9460; 
-  }
-.wrapper .signup-btn {
-    background-color:white;
-    padding: 7px 15px;
-    border: none;
-    border-radius:2px;
-    cursor: pointer;
-    box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.2); 
-    text-transform: none;
-  }
-  
- .wrapper .signup-btn:hover {
-    background-color: #e1dcdc; 
-  }
+
+.form {
+  width: 100%;
+}
+
+/* Input field styles */
+.MuiTextField-root {
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Button styles */
+.login-btn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.toggle-btn {
+  margin-top: 10px;
+  color: #1976d2;
+}
+
+/* Image styles */
+.login-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Text styles */
+.text-center {
+  text-align: center;
+  margin: 10px 0;
+}

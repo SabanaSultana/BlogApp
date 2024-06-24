@@ -18,66 +18,95 @@ export default function Login() {
   };
 
   const signUpChangeHandler = (e) => {
-    console.log(e.target.value)
     setSignupInput((prevSignupInput) => ({
-      ...prevSignupInput,         // why ...prevSignupInput...coz if I change only username so name and password will be same as previous
+      ...prevSignupInput,
       [e.target.name]: e.target.value
     }));
-    console.log(signupInput)
+  };
+
+  const signUpSubmitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/signUp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(signupInput)
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Signup successful', data);
+        setAccount('login');
+      } else {
+        console.error('Signup failed', data);
+      }
+    } catch (error) {
+      console.error('An error occurred', error);
+    }
   };
 
   return (
-    <Box className="w-96 login-container mt-10">
-      <img src={imageURL} alt="Login" className='img' />
+    <Box className="login-container">
+      <img src={imageURL} alt="Login" className='login-logo' />
       {account === 'login' ? (
-        <Box className='wrapper'>
+        <Box className='form-wrapper'>
           <TextField
-            id="standard-basic"
-            label="Enter username"
-            variant="standard"
+            label="Username"
+            variant="outlined"
+            fullWidth
+            margin="normal"
           />
           <TextField
-            id="standard-basic"
-            label="Enter password"
-            variant="standard"
+            label="Password"
+            variant="outlined"
+            type="password"
+            fullWidth
+            margin="normal"
           />
-          <Button variant="contained" className='login-btn'>
+          <Button variant="contained" color="primary" className='login-btn'>
             Login
           </Button>
-          <p className='text-center  text-sm m-2'>OR</p>
-          <Button variant="text" className='signup-btn' onClick={signUpHandler}>
-            CREATE AN ACCOUNT
+          <p className='text-center'>OR</p>
+          <Button variant="text" className='toggle-btn' onClick={signUpHandler}>
+            Create an Account
           </Button>
         </Box>
       ) : (
-        <Box className='wrapper'>
-          <TextField
-            id="standard-basic"
-            label="Enter Name"
-            variant="standard"
-            name='name'
-            onChange={signUpChangeHandler}
-          />
-          <TextField
-            id="standard-basic"
-            label="Enter username"
-            variant="standard"
-            name='username'
-            onChange={signUpChangeHandler}
-          />
-          <TextField
-            id="standard-basic"
-            label="Enter password"
-            variant="standard"
-            name='password'
-            onChange={signUpChangeHandler}
-          />
-          <Button variant="contained" className='login-btn' >
-            Sign Up
-          </Button>
-          <p className='text-center  text-sm m-2'>OR</p>
-          <Button variant="text" className='signup-btn' onClick={signUpHandler}>
-            ALREADY HAVE AN ACCOUNT
+        <Box className='form-wrapper'>
+          <form onSubmit={signUpSubmitHandler} className='form'>
+            <TextField
+              label="Name"
+              variant="outlined"
+              name='name'
+              fullWidth
+              margin="normal"
+              onChange={signUpChangeHandler}
+            />
+            <TextField
+              label="Username"
+              variant="outlined"
+              name='username'
+              fullWidth
+              margin="normal"
+              onChange={signUpChangeHandler}
+            />
+            <TextField
+              label="Password"
+              variant="outlined"
+              name='password'
+              type="password"
+              fullWidth
+              margin="normal"
+              onChange={signUpChangeHandler}
+            />
+            <Button variant="contained" color="primary" className='login-btn' type='submit'>
+              Sign Up
+            </Button>
+          </form>
+          <p className='text-center'>OR</p>
+          <Button variant="text" className='toggle-btn' onClick={signUpHandler}>
+            Already have an account?
           </Button>
         </Box>
       )}
