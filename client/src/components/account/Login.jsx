@@ -72,7 +72,7 @@ export default function Login() {
             name='password'
             onChange={signUpChangeHandler}
           />
-          <Button variant="contained" className='login-btn'>
+          <Button variant="contained" className='login-btn' >
             Sign Up
           </Button>
           <p className='text-center  text-sm m-2'>OR</p>
